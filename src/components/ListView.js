@@ -20,9 +20,8 @@ function ListView(props) {
   let sortedList = [];
 
   if(props.list !== undefined){
-    sortedList = props.list.filter((a) => { return !a.complete }).sort((a, b) => {return (a.priority < b.priority ? -1 : 1)});
+    sortedList = props.list.filter((a) => { return !a.complete }).sort((a, b) => {return (parseInt(a.priority) > parseInt(b.priority) ? -1 : 1)});
   }
-
   return(
     <div className="listView">
       <h2>{sortedList.length} tasks left</h2>
@@ -31,6 +30,7 @@ function ListView(props) {
           ? 
             <div className="currentTask">
               <p> 
+                <span className="priority" style={{background: `hsl(${99 - parseInt(sortedList[0].priority)}, 100%, 60%)`, color: `black`}}>{sortedList[0].priority}</span>
                 { sortedList[0].task } 
               </p>
               <div className="currentTaskButtons">

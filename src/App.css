@@ -159,13 +159,22 @@ li.newTask {
   width: 100%;
   text-align: center;
   font-size: 3rem;
+  position: relative;
 }
 .currentTaskButtons button{
   margin: 10px;
 }
 .priority {
-  background-color: #fff;
+  background-color: #ffffff;
+  width: 40px;
+  height: 40px;
   border-radius: 100px;
+  position: absolute;
+  left: 0px;
+  top: -3px;
+  text-align: center;
+  padding-top: 7px;
+  font-size: 2rem;
 }
 
 .editButton {

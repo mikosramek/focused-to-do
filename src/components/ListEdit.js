@@ -87,7 +87,7 @@ function ListEdit(props) {
         }
         <li className="newTask">
           <h3>New Task:</h3>
-          <input type="number" value={newPriority} onChange={(e) => {setNewPriority(clamp(e.target.value, 0, 99))}} max={99} />
+          <input type="number" value={newPriority} onChange={(e) => {setNewPriority(clamp(e.target.value, 0, 99))}} max={99} onKeyDown={(e) => {if(e.key === 'Enter')addNewListItem()}} />
           <input 
             type="text" 
             value={newTask} 
