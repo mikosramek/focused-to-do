@@ -1,0 +1,3 @@
+help??,0,true
+resume,1,false
+clean room,8,false
