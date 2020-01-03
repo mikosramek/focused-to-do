@@ -1,6 +1,6 @@
 {
-  "name": "ftd",
-  "version": "0.1.0",
+  "name": "focused-to-do",
+  "version": "0.1.2",
   "private": true,
   "homepage": "./",
   "dependencies": {
@@ -53,10 +53,10 @@
     "email": "miko@mikosramek.ca",
     "url": "https://mikosramek.ca"
   },
-  "description": ":)",
+  "description": "FTD will only show one task at a time, so long overwhelming lists are easier to get through.",
   "build": {
+    "productName": "Focused To Do",
     "appId": "ca.mikosramek.ftd",
-    "productName": "FTD",
     "copyright": "Copyright © 2019 ${author}",
     "mac": {
       "category": "public.app-category.utilities"

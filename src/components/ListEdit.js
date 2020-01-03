@@ -40,6 +40,27 @@ function ListEdit(props) {
     setTempList(a);
   }
 
+  const toggleItemAsComplete = (index) => {
+    const a = tempList.map((e) => {return deepCopyObjectArray(e)});
+    a[index].complete = !a[index].complete;
+    setTempList(a);
+  }
+
+  const completeAllTasks = () => {
+    const a = tempList.map((e) => {return deepCopyObjectArray(e)});
+    setTempList(a.map((item) => { item.complete = true; return item; }));
+  }
+  const uncompleteAllTasks = () => {
+    const a = tempList.map((e) => {return deepCopyObjectArray(e)});
+    setTempList(a.map((item) => { item.complete = false; return item; }));
+  }
+  const removeCompleteTasks = () => {
+    const a = tempList.map((e) => {return deepCopyObjectArray(e)});
+    setTempList(
+      a.filter((task) => { return !task.complete })
+    )
+  }
+
   useEffect( () => {
     setTempList(props.list.map((e) => {return deepCopyObjectArray(e)}));
   }, [props.list]);
@@ -58,6 +79,7 @@ function ListEdit(props) {
               <li key={index}>
                 <input type="number" value={clamp(listItem.priority, 0, 99)} onChange={(e) => updateTempList(e.target.value, index, "priority")} />
                 <input type="text" value={listItem.task} onChange={(e) => updateTempList(e.target.value, index, "task")} />
+                <input type="checkbox" name="completed" checked={listItem.complete} onChange={() => toggleItemAsComplete(index)} />
                 <button onClick={() => removeListItem(index)}>Remove Task</button>
               </li>
             )
@@ -77,6 +99,9 @@ function ListEdit(props) {
       </ul>
       <button onClick={confirmChanges} className="saveButton">Save Changes</button>
       <button onClick={cancelChanges}>Discard Changes</button>
+      <button onClick={completeAllTasks}>Complete all Tasks</button>
+      <button onClick={uncompleteAllTasks}>Uncomplete all Tasks</button>
+      <button onClick={removeCompleteTasks}>Clear Complete Tasks</button>
     </div>
   );
 }

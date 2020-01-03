@@ -20,24 +20,36 @@ function ListView(props) {
   let sortedList = [];
 
   if(props.list !== undefined){
-    sortedList = props.list.sort((a, b) => {return (a.priority < b.priority ? -1 : 1)})
+    sortedList = props.list.filter((a) => { return !a.complete }).sort((a, b) => {return (a.priority < b.priority ? -1 : 1)});
   }
 
   return(
-    <div>
-      <h2>Your next task:</h2>
-      <ul>
-        {
-          sortedList.length > 0
-            ? sortedList.map( (listItem, index) => {
-                return <li key={index} className={`task ${listItem.complete ? 'completed' : ''}`} onClick={() => confirmChanges(index)}>{index+1}: {listItem.task}</li>
-              })
-            : <p>Edit your list!</p>
-        }
-      </ul>
-      <button onClick={props.changeView}>Edit your list</button>
+    <div className="listView">
+      <h2>{sortedList.length} tasks left</h2>
+      {
+        sortedList.length > 0
+          ? 
+            <div className="currentTask">
+              <p> 
+                { sortedList[0].task } 
+              </p>
+              <div className="currentTaskButtons">
+                <button onClick={() => confirmChanges(props.list.indexOf(sortedList[0]))}>complete</button>
+                <button>skip</button>
+              </div>
+            </div>
+          : 
+            <div className="currentTask">
+              <p>there's nothing to do</p>
+            </div>
+      }
+      <button onClick={props.changeView} className="editButton">Edit your list</button>
     </div>
   );
 }
+
+// sortedList.map( (listItem, index) => {
+//   return <li key={index} className={`task ${listItem.complete ? 'completed' : ''}`} onClick={() => confirmChanges(index)}>{index+1}: {listItem.task}</li>
+// })
 
 export default ListView;

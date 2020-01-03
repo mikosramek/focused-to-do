@@ -26,7 +26,7 @@ tertiary: #3F7FA9
 }
 header {
   color: #F3F7F0;
-  padding: 50px 0;
+  padding: 50px 0 15px;
 }
 
 h1 {
@@ -45,7 +45,8 @@ h1::after {
   background-color: #EF414C;
 }
 h2 {
-  font-size: 2.3rem;
+  font-size: 2.2rem;
+  margin: 13px 0;
 }
 h3 {
   font-size: 2rem;
@@ -70,7 +71,7 @@ main {
   color: #F3F7F0;
 }
 
-ul {
+p,ul {
   font-size: 2rem;
 }
 
@@ -91,6 +92,15 @@ button:hover {
   border: 1px solid #3F7FA9;
 }
 
+.listView {
+  position: relative;
+}
+
+.editList li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .editList button {
   padding: 0;
 }
@@ -107,13 +117,16 @@ button:hover {
   width: calc(8% - 5px);
   text-align: right;
   padding-right: 10px;
+  flex-shrink: 0;
 }
 .editList input[type=text] {
   width: calc(77% - 5px);
+  flex-shrink: 1;
 }
 
-.newTask {
+li.newTask {
   margin: 20px 0;
+  display: block;
 }
 
 .newTask button,
@@ -130,4 +143,33 @@ button:hover {
 }
 .completed {
   text-decoration: line-through;
+}
+
+
+.currentTask {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  min-height: 40vh;
+}
+.currentTask p {
+  margin-top: 100px;
+  width: 100%;
+  text-align: center;
+  font-size: 3rem;
+}
+.currentTaskButtons button{
+  margin: 10px;
+}
+.priority {
+  background-color: #fff;
+  border-radius: 100px;
+}
+
+.editButton {
+  position: absolute;
+  top: -45px;
+  right: 0;
 }
